@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://lexical.dev" target={"_blank"}>Lexical!</a>
+          Welcome to <a href="https://lexical.dev" target={"_blank"} rel={"noreferrer"}>Lexical!</a>
         </h1>
         <ul className={"mt-4 text-primary"}>
           <li>
