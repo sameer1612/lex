@@ -14,14 +14,21 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://lexical.dev" target={"_blank"} rel={"noreferrer"}>Lexical!</a>
+          Welcome to{" "}
+          <a href="https://lexical.dev" target={"_blank"} rel={"noreferrer"}>
+            Lexical!
+          </a>
         </h1>
         <ul className={"mt-4 text-primary"}>
           <li>
-            <Link href="/plain">Plain Text Editor</Link>
+            <Link href="/plain" passHref>
+              <a className="lead">Plain Text Editor</a>
+            </Link>
           </li>
           <li>
-            <Link href="/rich">Rich Text Editor</Link>
+            <Link href="/rich" passHref>
+              <a className="lead">Rich Text Editor</a>
+            </Link>
           </li>
         </ul>
       </main>

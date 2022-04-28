@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 
 import LexicalComposer from "@lexical/react/LexicalComposer";
 import LexicalPlainTextPlugin from "@lexical/react/LexicalPlainTextPlugin";
+import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import LexicalContentEditable from "@lexical/react/LexicalContentEditable";
 import LexicalOnChangePlugin from "@lexical/react/LexicalOnChangePlugin";
 import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
@@ -44,12 +45,7 @@ export default function Plain() {
     editorState.read(() => {
       const root = $getRoot();
 
-      setText(
-        root
-          .getAllTextNodes()
-          .map((n) => n.__text)
-          .join("")
-      );
+      setText(root.getTextContent());
     });
   }
 
@@ -61,6 +57,7 @@ export default function Plain() {
           contentEditable={<LexicalContentEditable/>}
           placeholder={null}
         />
+        <HistoryPlugin />
         <LexicalOnChangePlugin onChange={onChange}/>
         <LexicalOnChangePlugin onChange={updateText}/>
         <MyCustomAutoFocusPlugin/>
