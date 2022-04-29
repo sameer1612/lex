@@ -13,12 +13,12 @@ import {
   LexicalEditor,
   RangeSelection,
   SELECTION_CHANGE_COMMAND,
-  TextNode,
+  TextNode
 } from 'lexical';
-
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-
+import React, { ReactPortal, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+
+
 
 function setPopupPosition(editor: HTMLElement, rect: DOMRect | null) {
   if (rect === null) {
@@ -65,7 +65,7 @@ function FloatingCharacterStylesEditor({
   isLink: boolean,
   isStrikethrough: boolean,
   isUnderline: boolean,
-}): any {
+}) {
   const popupCharStylesEditorRef = useRef<HTMLElement | null>(null);
   const mouseDownRef = useRef(false);
 
@@ -99,8 +99,7 @@ function FloatingCharacterStylesEditor({
       if (nativeSelection.anchorNode === rootElement) {
         let inner = rootElement;
         while (inner.firstElementChild != null) {
-          // @ts-ignore
-          inner = inner.firstElementChild;
+          inner = inner.firstElementChild as HTMLElement;
         }
         rect = inner.getBoundingClientRect();
       } else {
@@ -189,7 +188,7 @@ function FloatingCharacterStylesEditor({
 }
 
 
-function useCharacterStylesPopup(editor: LexicalEditor): any {
+function useCharacterStylesPopup(editor: LexicalEditor): ReactPortal | null {
   const [isText, setIsText] = useState(false);
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
@@ -255,7 +254,7 @@ function useCharacterStylesPopup(editor: LexicalEditor): any {
 }
 
 
-export default function CharacterStylesPopupPlugin(): any {
+export default function CharacterStylesPopupPlugin() {
   const [editor] = useLexicalComposerContext();
   return useCharacterStylesPopup(editor);
 }

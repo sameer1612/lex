@@ -16,7 +16,8 @@ a {
 }
 
 .lex-wrapper > div[contenteditable="true"] {
-  min-height: 10rem;
+  height: 10rem;
+  overflow-y: scroll;
   padding: 0.5rem 0.7rem;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
@@ -152,4 +153,13 @@ a {
   width: 1px;
   background-color: #eee;
   margin: 0 4px;
+}
+
+.editor-state-display {
+ height: 68vh;
+}
+
+.html-code-display, .html-result-display {
+  height: 33vh;
+  overflow-y: scroll;
 }
