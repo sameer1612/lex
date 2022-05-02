@@ -66,7 +66,7 @@ function FloatingCharacterStylesEditor({
   isStrikethrough: boolean,
   isUnderline: boolean,
 }) {
-  const popupCharStylesEditorRef = useRef<HTMLElement | null>(null);
+  const popupCharStylesEditorRef = useRef(null);
   const mouseDownRef = useRef(false);
 
   const insertLink = useCallback(() => {
@@ -135,7 +135,6 @@ function FloatingCharacterStylesEditor({
   }, [editor, updateCharacterStylesEditor]);
 
   return (
-    // @ts-ignore
     <div ref={popupCharStylesEditorRef} className="character-style-popup">
       <button
         onClick={() => {
